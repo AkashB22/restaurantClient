@@ -1,0 +1,19 @@
+.spacingIcon i{
+    padding : 0px 10px;
+}
+
+.button button{
+    margin : 10px 10px;
+}
+
+.password-bg{
+    padding: 20px 20px;
+    background-color: #ff000021;
+    border-radius: 2%;
+}
+
+input.disabled {
+    pointer-events:none;
+    color:#AAA;
+    background:#F5F5F5;
+}

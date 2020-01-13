@@ -1,0 +1,48 @@
+<div *ngIf="userDetails?.email">
+    <div class="row mx-5">
+        <div class="col-sm-6 col-md-6">
+            <h4>{{userDetails.username}}</h4>
+            <small><cite title="Bangalore, IN">Bangalore, IN <i class="fa fa-map-marker"></i></cite></small>
+            <p class="spacingIcon">
+                <i class="fa fa-envelope"></i>{{userDetails.email}}
+                <br />
+                <i class="fa fa-globe"></i><a href="http://www.google.com">www.google.com</a>
+                <br />
+                <i class="fa fa-gift"></i>June 02, 1988</p>
+            <div class="button">
+                <button type="button" class="btn btn-primary" (click)="editable = (editable==true)? false: true">Edit</button>
+                <button type="button" class="btn btn-danger" (click)="onDelete()">Delete</button>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-6">
+            <form #updateUser="ngForm" (ngSubmit)="updateUserForm(updateUser)">
+                <label for="username">Username: </label>
+                <input type="text" name="username" class="form-control" [ngClass]="{'disabled' : !editable}"
+                    [(ngModel)]="model.username" #username="ngModel">
+                <label for="email">Email: </label>
+                <input type="email" name="email" class="form-control" [ngClass]="{'disabled' : !editable}"
+                    [(ngModel)]="model.email" #username="ngModel">
+                <p class="button text-center">
+                    <button type="submit" class="btn btn-success" [ngClass]="{'disabled' : !editable}">
+                        Update User
+                    </button>
+                </p>
+            </form>
+            <form class="password-bg" #updateUser="ngForm" (ngSubmit)="updateUserForm(updateUser)">
+                <div class="alert alert-warning">Warning: Please remember your password</div>
+                <label for="password">Password: </label>
+                <p class="float-right" (click)="passwordChange=(passwordChange==false)? true : false"><i class="fa fa-user-edit"></i></p>
+                <input type="password" name="password" class="form-control" [ngClass]="{'disabled' : !(passwordChange && editable)}"
+                    [(ngModel)]="model.password" #username="ngModel">
+                <label for="repeatPassword">Repeat Password: </label>
+                <input type="password" name="repeatPassword" class="form-control" [ngClass]="{'disabled' : !(passwordChange && editable)}"
+                    [(ngModel)]="model.repeatPassword" #username="ngModel">
+                <p class="button text-center">
+                    <button type="submit" class="btn btn-success" [ngClass]="{'disabled' : !(passwordChange && editable)}">
+                        Change Password
+                    </button>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>

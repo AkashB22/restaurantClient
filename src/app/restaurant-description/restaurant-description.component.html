@@ -1,0 +1,22 @@
+<div *ngIf="restaurantDetails" class="col p-4 d-flex flex-column position-static">
+    <strong class="d-inline-block mb-2 text-primary">{{restaurantDetails.restaurantSpecifics.restaurantName}}</strong>
+    <h3 class="mb-0">{{restaurantDetails.restaurantSpecifics.cuisine}}</h3>
+    <div class="mb-1 text-muted">{{restaurantDetails.restaurantSpecifics.city}}</div>
+    <p class="card-text mb-auto">Average Cost For Two: {{restaurantDetails.restaurantSpecifics.averageCostForTwo | currencyCustom:restaurantDetails.restaurantSpecifics.currency}}</p>
+    <p class="card-text mb-auto" >Table Booking: {{restaurantDetails.restaurantSpecifics.hasTableBooking ? 'Yes' : 'No'}}</p>
+    <p class="card-text mb-auto" >Online Delivery: {{restaurantDetails.restaurantSpecifics.hasOnlineDelivery ? 'Yes' : 'No'}}</p>
+    <span class="my-3">
+        <button type="button" class="btn btn-info" (click)="displayMore = (displayMore)? false: true">
+            Continue reading
+        </button>
+    </span>
+    <div *ngIf="displayMore">
+        <p class="card-text mb-auto" [ngStyle]= "{'color': (restaurantDetails.restaurantSpecifics.ratingColor | custom)}">Ratings: {{restaurantDetails.restaurantSpecifics.aggregateRating}} ({{restaurantDetails.restaurantSpecifics.ratingText}}) with votes of {{restaurantDetails.restaurantSpecifics.votes}}</p>
+        <p class="card-text mb-auto" >City: {{restaurantDetails.city}}</p>
+        <p class="card-text mb-auto" >Address: {{restaurantDetails.address}}</p>
+        <p class="card-text mb-auto" >Locatiy: {{restaurantDetails.localityVerbose}}</p>
+    </div>
+</div>
+<!-- <agm-map [latitude]="lat" [longitude]="long">
+    <agm-marker [latitude]="lat" [longitude]="long"></agm-marker>
+</agm-map> -->

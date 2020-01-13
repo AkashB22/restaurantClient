@@ -1,0 +1,54 @@
+<h1>Restaurant details</h1>
+<div class= "row">
+    <div class="d-flex justify-content-between p-2 mainBgColor col-6">
+        <ngb-pagination [collectionSize]="detailsLength" [(page)]="page" [pageSize]="pageSize">
+        </ngb-pagination>
+    </div>
+    <div class="dropdown col-6">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" #myDiv>
+          Filter button
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a *ngFor="let cuisin of cuisine" class="dropdown-item" value="cuisin" (click)="onFilter($event)">{{cuisin}}</a>
+        </div>
+    </div>
+</div>
+<form class="py-3">
+    <div class="form-group form-inline">
+        Full text search: <input class="form-control ml-2" type="text" (input)="search($event)"/>
+    </div>
+</form>
+<table class="table table-striped mainBgColor table-responsive">
+  <thead>
+  <tr>
+    <!-- <th scope="col">#</th> -->
+    <th scope="col">restaurantName</th>
+    <th scope="col">cuisine</th>
+    <th scope="col" sortable="averageCostForTwo" (sort)="onSort($event)" >averageCostForTwo</th>
+    <th scope="col">currency</th>
+    <th scope="col">TableBooking</th>
+    <th scope="col">OnlineDelivery</th>
+    <th scope="col" sortable="aggregateRating" (sort)="onSort($event)" >Rating Avg</th>
+    <th scope="col">ratingText</th>
+    <th scope="col" sortable="votes" (sort)="onSort($event)" >votes</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr  *ngFor="let restaurant of (restaurants$| async )| slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let i = index">
+    <!-- <td scope="row"><a [routerLink]="['/desp/'+restaurant.restaurantSpecifics.restaurantID]" [queryParams]="{debug: true}">{{ restaurant.restaurantID }}</a></td> -->
+    <td><a [routerLink]="['/desp/'+restaurant.restaurantSpecifics.restaurantID]" [queryParams]="{debug: true}">{{ restaurant.restaurantSpecifics.restaurantName }}</a></td>
+    <td>{{ restaurant.restaurantSpecifics.cuisine}}</td>
+    <td>{{ restaurant.restaurantSpecifics.averageCostForTwo | number }}</td>
+    <td>{{ restaurant.restaurantSpecifics.currency }}</td>
+    <td>{{ restaurant.restaurantSpecifics.hasTableBooking }}</td>
+    <td>{{ restaurant.restaurantSpecifics.hasOnlineDelivery }}</td>
+    <td>{{ restaurant.restaurantSpecifics.aggregateRating }}</td>
+    <td [ngStyle]= "{'color': (restaurant.restaurantSpecifics.ratingColor | custom)}">{{ restaurant.restaurantSpecifics.ratingText }}</td>
+    <td>{{ restaurant.restaurantSpecifics.votes }}</td>
+  </tr>
+  </tbody>
+</table>
+
+<!-- <div>
+  <p>{{location}}</p>
+</div> -->

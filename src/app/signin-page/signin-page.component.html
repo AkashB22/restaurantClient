@@ -1,0 +1,36 @@
+<div class="row mb-3 text-center">
+    <div class="col-md-6">
+        <form class="form-signin" #signinForm = "ngForm" (ngSubmit)="onSubmit(signinForm)">
+            <p><i class="fa fa-user signinIcon"></i></p>
+            <h1 class="h3 mb-4 font-weight-normal">Please sign in</h1>
+            <div  class="alert alert-danger" *ngIf="msg">
+                <label>{{msg}}</label>
+            </div>
+            <label for="email" class="sr-only">Email address</label>
+            <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus 
+                [(ngModel)]="model.email" #email="ngModel" [pattern]="emailPattern"
+                    [ngClass]="{'invalid-textbox' : (signinForm.submitted && !email.valid)}">
+            <div *ngIf='(signinForm.submitted && email.errors?.pattern)'> 
+                <label class="validation-message">Not a valid email</label>
+            </div>
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" name="password" class="form-control" placeholder="Password" required 
+                [(ngModel)]="model.password" #password="ngModel" minlength="6"
+                [ngClass]="{'invalid-textbox' : (signinForm.submitted && !password.valid)}">
+            <div *ngIf="(signinForm.submitted && password.errors?.minlength)">
+                <label class="validation-message">Minimum password needs 6 characters</label>
+            </div>
+            <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <button class="btn btn-lg btn-secondary btn-block" routerLink='/signup' >Sign up</button>
+            <button class="btn btn-lg btn-outline-dark btn-block" >Forget password</button>
+        </form>
+    </div>
+    <div class="col-md-6 signinImage">
+        <img class="" src="assets/signup.png" alt="signinImage">
+    </div>
+</div>

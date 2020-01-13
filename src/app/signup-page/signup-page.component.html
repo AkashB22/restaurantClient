@@ -1,0 +1,38 @@
+<div class="row mb-3 text-center">
+    <div class="col-md-6">
+        <form class="form-signin" #signupForm="ngForm" (ngSubmit)='onSubmit(signupForm)'>
+            <p><i class="fas fa-user-plus signupimg"></i></p>
+            <h1 class="h3 mb-4 font-weight-normal">Please sign up</h1>
+            <div  class="alert alert-danger" *ngIf="msg">
+                <label>{{msg}}</label>
+            </div>
+            <label for="username" class="sr-only">Username</label>
+            <input type="text" name="username" class="form-control" placeholder="username" required autofocus [(ngModel)]="model.username" #username="ngModel">
+            <label for="email" class="sr-only">Email address</label>
+            <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus 
+                #email="ngModel" [(ngModel)]="model.email" [pattern]="emailPattern"
+                    [ngClass]="{'invalid-textbox' : signupForm.submitted && !email.valid}">
+            <div class="alert alert-danger" *ngIf="signupForm.submitted && email.errors?.pattern">
+                <label class="validation-message">Invalid email</label>
+            </div>
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" name="password" class="form-control" placeholder="Password" required 
+                #password="ngModel" [(ngModel)]="model.password" minlength="6"
+                    [ngClass]="{'invalid-textbox' : signupForm.submitted && !password.valid}">
+            <div class="alert alert-danger" *ngIf="(signupForm.submitted && password.errors?.minlength)">
+                <label>Minimum 6 characters for password</label>
+            </div>
+            <label for="repeatPassword" class="sr-only">Repeat Password</label>
+            <input type="password" name="repeatPassword" class="form-control" placeholder="Repeat Password" required 
+                #repeatPassword="ngModel" [(ngModel)]="model.repeatPassword" minlength="6"
+                    [ngClass]="{'invalid-textbox' :signupForm.submitted && !repeatPassword.valid}"> 
+            <div class="alert alert-danger" *ngIf="(signupForm.submitted && repeatPassword.errors?.minlength)">
+                <label>Minimum 6 characters for password</label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+        </form>
+    </div>
+    <div class="col-md-6 signupImage">
+        <img class="" src="assets/signup.png" alt="signupImage">
+    </div>
+</div>
