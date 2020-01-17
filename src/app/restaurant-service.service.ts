@@ -11,8 +11,11 @@ export class RestaurantServiceService {
 
   constructor(private http: HttpClient) { }
 
-  private restaurantUrl = 'http://localhost:3000/api/restaurant';
-  private restaurantDespUrl = 'http://localhost:3000/api/restaurantDesp';
+  // private restaurantUrl = 'http://localhost:3000/api/restaurant';
+  // private restaurantDespUrl = 'http://localhost:3000/api/restaurantDesp';
+  
+  private restaurantUrl = 'https://restaurant-app-server.herokuapp.com/api/restaurant';
+  private restaurantDespUrl = 'https://restaurant-app-server.herokuapp.com/api/restaurantDesp';
   private restaurants: any;
   private restaurantsUpdated = new Subject();
   noAuthHeader:any = {
