@@ -12,6 +12,7 @@ export class AppComponent {
   title = 'restaurantClient';
   validUser: Boolean;
   username: string;
+  isCollapsed: any;
 
   constructor(private service : UserService, private router: Router, private sharedService: SharedService){}
 

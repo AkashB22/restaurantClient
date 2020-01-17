@@ -9,9 +9,9 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  //userUrl:string = 'http://localhost:3000/users/';
+  userUrl:string = 'http://localhost:3000/users/';
   
-  userUrl:string = 'https://restaurant-app-server.herokuapp.com/users/';
+  //userUrl:string = 'https://restaurant-app-server.herokuapp.com/users/';
   noAuthHeader = {
     headers : new HttpHeaders({
       'x-noauth' : 'true'

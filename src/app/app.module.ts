@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RestaurantHomeComponent, NgbdSortableHeader } from './restaurant-home/restaurant-home.component';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -34,10 +34,9 @@ import {AuthInterceptor} from './auth.interceptor';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule.forRoot(),
+    NgbModule,
     HttpClientModule,
     FormsModule,
-    NgbPaginationModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCNNfHUYNJIf6_9QOqC297BYNdygDqfgMc'

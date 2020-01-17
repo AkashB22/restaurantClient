@@ -46,13 +46,13 @@ export class NgbdSortableHeader {
 
 
 export class RestaurantHomeComponent implements OnInit {
-  private restaurants: RestaurantDetails[] = [];
+  restaurants: RestaurantDetails[] = [];
   constructor(private service : RestaurantServiceService, private decimalPipe: DecimalPipe, private userService: UserService) { }
   private serviceRestSub:Subscription;
   page: number = 1;
   pageSize: number = 20;
   detailsLength: number;
-  private restaurants$: Observable<RestaurantDetails[]>;
+  restaurants$: Observable<RestaurantDetails[]>;
   filter = new FormControl('');
   cuisine : string[];
   validUser: Boolean = false;

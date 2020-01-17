@@ -11,5 +11,6 @@ export interface Restaurant{
     ratingColor: string;
     ratingText: string;
     votes: Number;
+    city: string;
     _v: string;
 }
